@@ -1,66 +1,94 @@
-# Phase 2 Project
+# Housing Price Linear Regression Analysis
 
-Another module down--you're almost half way there!
 
-![awesome](https://raw.githubusercontent.com/learn-co-curriculum/dsc-phase-2-project-campus/master/halfway-there.gif)
+![houses](images/houses.jpg)
 
-All that remains in Phase 2 is to put our newfound data science skills to use with a large project! This project should take 20 to 30 hours to complete.
+<a href='https://www.freepik.com/vectors/sale'>Sale vector created by pch.vector - www.freepik.com</a>
 
-## Project Overview
+**Author**: Samantha Knee
 
-For this project, you will use regression modeling to analyze house sales in a northwestern county.
+## Overview
 
-### The Data
+This project is an analysis of housing prices in King County, WA, intended to provide insights to a real estate firm helping home sellers achieve the highest selling price. Regression analysis showed that the amount of times a house is viewed, the number of bathrooms in the house and the condition of the house is highly correlated with the house’s price. The real estate firm’s clients can use this information to drive the highest price possible in their current house.
 
-This project uses the King County House Sales dataset, which can be found in  `kc_house_data.csv` in the data folder in this repo. The description of the column names can be found in `column_names.md` in the same folder. As with most real world data sets, the column names are not perfectly described, so you'll have to do some research or use your best judgment if you have questions about what the data means.
+***
 
-It is up to you to decide what data from this dataset to use and how to use it. If you are feeling overwhelmed or behind, we recommend you ignore some or all of the following features:
+## Business Problem
 
-* date
-* view
-* sqft_above
-* sqft_basement
-* yr_renovated
-* zipcode
-* lat
-* long
-* sqft_living15
-* sqft_lot15
+ABC Realty is looking to become more competitive in the highly saturated King County, WA real estate market. The Company needs a model that accurately determines housing prices, so that their realtor’s can provide the best insight to sellers on what can increase the value of a home. This can serve as a competitive advantage for ABC Realty so they can attract more home sellers to use the Company’s service. The questions answered in this analysis include:
 
-### Business Problem
+* How much does the condition of a home affect sale price?
+* How does number of bathrooms affect sale price?
+* How does the number of views on a house affect sale price?
 
-It is up to you to define a stakeholder and business problem appropriate to this dataset.
+Answers to these questions can provide concrete recommendations to sellers as to if it is worth changing aspects of their current house, or if the expenses required to remodel outweigh the benefit of an increase in price.
 
-If you are struggling to define a stakeholder, we recommend you complete a project for a real estate agency that helps homeowners buy and/or sell homes. A business problem you could focus on for this stakeholder is the need to provide advice to homeowners about how home renovations might increase the estimated value of their homes, and by what amount.
+***
 
-## Deliverables
+## Data
 
-There are three deliverables for this project:
+The dataset used contains home sale prices for King County, WA between May 2014 and May 2015. It includes details about characteristics of the house including number of bedrooms, number of bathrooms, square footage of the lot, living room, and above ground square footage. It also includes location data such as latitude and longitude coordinates as well as zipcode. It includes a condition rating on a scale of 1-5 and a grade rating on a scale of 1-10. The dependent variable throughout the analysis is price.
 
-* A **GitHub repository**
-* A **Jupyter Notebook**
-* A **non-technical presentation**
+![graph1](./images/price_location.png)
+***
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic for instructions on creating and submitting your deliverables. Refer to the rubric associated with this assignment for specifications describing high-quality deliverables.
+## Methods
 
-### Key Points
+This project used linear regression to define the relationship between sale price and the independent variables. Certain variables that were not found to have a statistically significant impact on price were dropped. Sale prices over $2 million were removed from the data set. Features with high multicollinearity among other features were also removed. Transformations were also performed on the dependent variable in order to meet the assumption of residual normality.
 
-* **Your deliverables should explicitly address each step of the data science process.** Refer to [the Data Science Process lesson](https://github.com/learn-co-curriculum/dsc-data-science-processes) from Topic 19 for more information about process models you can use.
+***
 
-* **Your Jupyter Notebook should demonstrate an iterative approach to modeling.** This means that you begin with a basic model, evaluate it, and then provide justification for and proceed to a new model. After you finish refining your models, you should provide 1-3 paragraphs discussing your final model - this should include interpreting at least 3 important parameter estimates or statistics.
+## Results
 
-* **Based on the results of your models, your notebook and presentation should discuss at least two features that have strong relationships with housing prices.**
+There is a statistically significant relationship with price and 26 independent variables. The variables described below have both a strong relationship with price in the final model, and are actionable items that have the potential to be changed in a given house.
 
-## Getting Started
+A house that is viewed 4 times has a higher price by 34% compared with houses viewed 0 times. A house viewed 3 times has a 21% higher price than 0 views, holding all else equal.
 
-Start on this project by forking and cloning [this project repository](https://github.com/learn-co-curriculum/dsc-phase-2-project) to get a local copy of the dataset.
+![views](./images/views.png)
 
-We recommend structuring your project repository similar to the structure in [the Phase 1 Project Template](https://github.com/learn-co-curriculum/dsc-project-template). You can do this either by creating a new fork of that repository to work in or by building a new repository from scratch that mimics that structure.
+Houses with 3-4 (inclusive of 4) bathrooms have a price 9% higher than homes with 1 bathroom. Houses with 2-3 (inclusive of 3) bathrooms have a 6% higher price on average.
 
-## Project Submission and Review
+![bathrooms](./images/bathrooms.png)
 
-Review the "Project Submission & Review" page in the "Milestones Instructions" topic to learn how to submit your project and how it will be reviewed. Your project must pass review for you to progress to the next Phase.
+Houses with condition of 5 out of 5 have an 18.6% higher price on average than homes with condition of 1. Houses with conditions 4 out of 5 have 10% higher price on average.
 
-## Summary
+![conditions](./images/conditions.png)
 
-This project will give you a valuable opportunity to develop your data science skills using real-world data. The end-of-phase projects are a critical part of the program because they give you a chance to bring together all the skills you've learned, apply them to realistic projects for a business stakeholder, practice communication skills, and get feedback to help you improve. You've got this!
+***
+
+
+## Conclusions
+
+* **Sellers should use open houses to increase the number of views on their house.** This is a simple, affordable way to potentially lead to a higher price. Houses viewed 4 times have a price 34% higher on average, and a house viewed just one has a 16% higher price on average.
+
+* **It may make sense for some sellers to make a renovation to the home increasing the number of bathrooms.** For example, if a house is worth $500k with 1 bathroom, increasing to 3 bathrooms could increase price by 45,000. If it costs less than $45,000 to add 2 bathrooms to the home, it will be likely worth completing that renovation for market value.
+
+* **Sellers should try to increase the condition of their home to a 4 or 5 if possible.** Having a 4 condition home appears to boost price by 9.8%, while condition 5 increases price by 18.6%.
+
+
+## Next Steps
+
+* **Run a similar analysis for buyers of homes.** It would be interesting to discover what aspects of a home buyers should look for to get the lowest price possible. For example, we already discovered in the model that homes in quadrant 4 are 37% lower in price on average than homes in quadrant 1. In the future, we would like to explore this information further and build a model with the buyer of homes in mind.
+
+* **Further investigate the relationship between bedrooms and price.** In our initial data exploration, it appeared there was a positive correlation between bedrooms and price, however, after binning the # of bedrooms variables, many of the bins were dropped as variables for being statistically insignificant, and the bedroom variable remaining (6+) has a negative relationship with price. This needs some further investigation, and in the future, we may consider using a subset of houses with a smaller range of # of bedrooms, such as 3-5, and see what the relationship is in that scenario.
+
+
+## For More Information
+
+Please review the EDA in this [Jupyter Notebook](./Housing-Data-EDA.ipynb), thefull modeling analysis in this [Jupyter Notebook](./Housing-Data-Modeling.ipynb), and this [presentation](./House_Price_Analysis_Presentation.pdf).
+
+For any additional questions, please contact **Samantha Knee at samanthaknee24@gmail.com**
+
+![sale](images/for_sale.jpg)
+
+## Repository Structure
+
+
+```
+├── README.md                                 <- The top-level README for reviewers of this project
+├── Housing-Data-EDA.ipynb                    <- Narrative documentation of data cleaning in Jupyter notebook
+├── Housing-Data-Modeling.ipynb               <- Narrative documentation of analysis in Jupyter notebook
+├── House_Price_Analysis_Presentation.pdf     <- PDF version of project presentation
+├── data                                      <- Both sourced externally and generated from code
+└── images                                    <- Both sourced externally and generated from code
+```
